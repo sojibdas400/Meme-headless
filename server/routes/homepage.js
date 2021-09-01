@@ -1,9 +1,7 @@
-import express from 'express'
+import express from "express";
+import { postMeme } from "../controllers/memeController.js";
 
-const router = express()
+const router = express();
 
-router.get('/',(req,res)=>{
-    res.send("hello")
-})
-
+router.get("/", postMeme);
 export default router;
