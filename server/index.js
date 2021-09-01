@@ -3,11 +3,28 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
+import homePage from './routes/homepage.js'
 const app = express();
 
 // app.use(bodyParser.json({ limit: "30mb", extended: true }));
 // app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+app.use('/',homePage) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const CONNECTION_URL =
   "mongodb+srv://sojibdas:asdfghjkl@cluster0.qvsyq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
