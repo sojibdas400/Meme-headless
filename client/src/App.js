@@ -3,11 +3,14 @@ import { Container, Typography, AppBar, Grow, Grid } from "@material-ui/core";
 import Form from "./components/Form/Form";
 import Memes from "./components/Memes/Memes";
 
+import useStyles from "./styles";
+
 const App = () => {
+  const classes = useStyles();
   return (
     <Container maxWidth="sm">
-      <AppBar position="" color="default">
-        <Typography variant="h2" align="center">
+      <AppBar className={classes.appBar} position="" color="default">
+        <Typography classsName={classes.heading} variant="h2" align="center">
           Meme Gallery
         </Typography>
       </AppBar>
