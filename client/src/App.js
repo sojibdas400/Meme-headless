@@ -16,8 +16,8 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Container maxWidth="sm">
-      <AppBar className={classes.appBar} position="" color="default">
+    <Container maxWidth="lg">
+      <AppBar className={classes.appBar} position="sticky" color="default">
         <Typography classsName={classes.heading} variant="h2" align="center">
           Meme Gallery
         </Typography>
@@ -31,14 +31,14 @@ const App = () => {
           <Grid
             container
             spacing={3}
-            justify="space-between"
+            justifyContent="space-between"
             alignItems="stretch"
           >
-            <Grid item xs={12} sm={7}>
-              <Memes />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={10}>
               <Form />
+            </Grid>
+            <Grid item xs={12} sm={10}>
+              <Memes />
             </Grid>
           </Grid>
         </Container>
