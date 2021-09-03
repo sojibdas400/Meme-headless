@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const memeSchema = mongoose.Schema({
+const postSchema = mongoose.Schema({
   title: String,
   message: String,
   creator: String,
@@ -15,5 +15,5 @@ const memeSchema = mongoose.Schema({
     default: new Date(),
   },
 });
-const postMeme = mongoose.model("postMeme", memeSchema);
-export default postMeme;
+const PostMessage = mongoose.model("PostMessage", postSchema);
+export default PostMessage;

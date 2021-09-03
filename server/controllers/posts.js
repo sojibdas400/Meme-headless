@@ -1,17 +1,17 @@
-import postMeme from "../models/postMeme.js";
+import PostMessage from "../models/postMessage.js";
 
-export const getMeme = async (req, res) => {
+export const getPosts = async (req, res) => {
   try {
-    const getAllMemes = await postMeme.find();
+    const getAllMemes = await PostMessage.find();
     res.status(200).json(getAllMemes);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
-export const createMeme = async (req, res) => {
+export const createPost = async (req, res) => {
   const body = req.body;
 
-  const newMeme = new postMeme(body);
+  const newMeme = new PostMessage(body);
   try {
     await newMeme.save();
     res.status(201).json(newMeme);
