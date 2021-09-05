@@ -1,44 +1,55 @@
-import React, { useEffect } from "react";
-import { Container, Typography, AppBar, Grow, Grid } from "@material-ui/core";
-import Form from "./components/Form/Form";
-import Memes from "./components/Memes/Memes";
+import React, { useState, useEffect } from "react";
+import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { getPosts } from "./actions/posts";
 
+import Posts from "./components/Posts/Posts";
+import Form from "./components/Form/Form";
+import { getPosts } from "./actions/posts";
 import useStyles from "./styles";
 
 const App = () => {
-  const classes = useStyles();
+  const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch]);
+  }, [currentId, dispatch]);
 
   return (
     <Container maxWidth="lg">
-      <AppBar className={classes.appBar} position="static" color="default">
-        <Typography classsName={classes.heading} variant="h2" align="center">
+      <AppBar className={classes.appBar} position="static" color="inherit">
+        <Typography className={classes.heading} variant="h2" align="center">
           Meme Gallery
         </Typography>
+        <div>
+          <h2
+            style={{
+              float: "right",
+              width: "150px",
+              border: "1px solid black",
+              padding: "10px",
+              marginLeft: "20px",
+              textAlign:"center"
+            }}
+          >
+            See Stats
+          </h2>
+        </div>
       </AppBar>
-
-      <Typography variant="h4" align="center">
-        stats
-      </Typography>
       <Grow in>
         <Container>
           <Grid
             container
-            spacing={3}
-            justifyContent="space-between"
+            justify="space-between"
             alignItems="stretch"
+            spacing={4}
           >
-            <Grid item xs={12} sm={10}>
-              <Form />
+            <Grid item xs={12} sm={12}>
+              <Form currentId={currentId} setCurrentId={setCurrentId} />
             </Grid>
-            <Grid item xs={12} sm={10}>
-              <Memes />
+            <Grid item xs={12} sm={12}>
+              <Posts setCurrentId={setCurrentId} />
             </Grid>
           </Grid>
         </Container>
@@ -46,4 +57,5 @@ const App = () => {
     </Container>
   );
 };
+
 export default App;
