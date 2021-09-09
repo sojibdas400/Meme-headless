@@ -9,10 +9,7 @@ import { createPost, updatePost } from "../../actions/posts";
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
-    creator: "",
-    title: "",
-    message: "",
-    tags: "",
+    imageLink: "",
     selectedFile: "",
   });
   const post = useSelector((state) =>
@@ -28,10 +25,7 @@ const Form = ({ currentId, setCurrentId }) => {
   const clear = () => {
     setCurrentId(0);
     setPostData({
-      creator: "",
-      title: "",
-      message: "",
-      tags: "",
+      imageLink: "",
       selectedFile: "",
     });
   };
@@ -55,7 +49,7 @@ const Form = ({ currentId, setCurrentId }) => {
     console.log(base64);
     setPostData({ ...postData, selectedFile: base64 });
     // dispatch(createPost(postData));
-    handleSubmit(event);
+    // handleSubmit(event);
   };
   const convertbase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -88,11 +82,11 @@ const Form = ({ currentId, setCurrentId }) => {
             xs={12}
           >
             <TextField
-              name="creator"
+              name="imageLink"
               placeholder="Provide link"
-              value={postData.creator}
+              value={postData.imageLink}
               onChange={(e) =>
-                setPostData({ ...postData, creator: e.target.value })
+                setPostData({ ...postData, imageLink: e.target.value })
               }
             />
             <Button
